@@ -6,6 +6,22 @@ _Built for applications powered by [http-error-kit][http-error-kit], this middle
 
 > 💡 What the HEK?! Need a hassle-free way to manage error responses for `http-error-kit` errors in Express? `@wthek/express-middleware` has got you covered!
 
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/skillnter/wthek-express-middleware/main.yml)
+[![npm version](https://img.shields.io/npm/v/%40wthek%2Fexpress-middleware?color=brightgreen)](https://www.npmjs.com/package/@wthek/express-middleware)
+[![GitHub license](https://img.shields.io/github/license/skillnter/wthek-express-middleware?color=brightgreen)](LICENSE)
+[![GitHub Issues](https://img.shields.io/github/issues/Skillnter/wthek-express-middleware)](https://github.com/Skillnter/http-error-kit/issues)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/6a36f034f49c456dbdec8e52d7b55fdf)](https://app.codacy.com/gh/Skillnter/wthek-express-middleware/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6a36f034f49c456dbdec8e52d7b55fdf)](https://app.codacy.com/gh/Skillnter/wthek-express-middleware/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+![npms.io (final)](https://img.shields.io/npms-io/maintenance-score/%40wthek%2Fexpress-middleware?color=brightgreen)
+![npm](https://img.shields.io/npm/dy/%40wthek%2Fexpress-middleware)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/@wthek/express-middleware/1.0.0)](https://socket.dev/npm/package/@wthek/express-middleware/overview/1.0.0)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-121013?logo=github&logoColor=white)](https://skillnter.github.io/wthek-express-middleware/)
+[![Github Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-30363D?&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/Skillnter)
+[![Open Collective](https://img.shields.io/badge/Open%20Collective-3385FF?logo=open-collective&logoColor=white)](https://opencollective.com/skillnter)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/skillnter)
+[![Patreon](https://img.shields.io/badge/Patreon-F96854?logo=patreon&logoColor=white)](https://www.patreon.com/skillnter)
+[![PayPal](https://img.shields.io/badge/PayPal-003087?logo=paypal&logoColor=fff)](https://www.paypal.me/skillnte)
+
 ## Features
 
 -   **Official `http-error-kit` Extension** – The recommended middleware for Express.js apps.
