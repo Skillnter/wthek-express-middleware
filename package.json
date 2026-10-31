@@ -1,26 +1,46 @@
 {
     "name": "@wthek/express-middleware",
-    "version": "1.0.0",
-    "description": "Express middleware for handling and formatting errors using http-error-kit. Ensures structured error responses with correct status codes.",
+    "version": "1.1.0",
+    "description": "Production-safe Express.js error-handling middleware for http-error-kit. Maps KitHttpError instances to structured JSON responses with correct HTTP status codes, headersSent protection, and optional logging.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "sideEffects": false,
+    "engines": {
+        "node": ">=18"
+    },
     "scripts": {
         "test": "jest --config jest.config.ts",
         "build": "tsc --build",
-        "coverage": "jest --coverage --config jest.config.ts"
+        "coverage": "jest --coverage --config jest.config.ts",
+        "lint": "eslint src/ test/ --ext .ts",
+        "prepublishOnly": "npm run test && npm run build"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Skillnter/wthek-express-middleware.git"
     },
     "keywords": [
-        "http",
-        "error",
-        "kit",
-        "http-errors",
-        "custom-errors",
-        "error-handling",
         "express",
+        "express-middleware",
+        "express-error-handler",
+        "error-handling",
+        "http-error-kit",
+        "wthek",
+        "http-errors",
+        "rest-api",
+        "status-codes",
+        "api-error",
+        "json-error",
+        "error-handler",
+        "typescript",
+        "middleware",
         "skillnter"
     ],
     "author": "Himanshu Bansal <skillhimanshubansal@gmail.com>",
@@ -30,9 +50,11 @@
     },
     "homepage": "https://github.com/Skillnter/wthek-express-middleware#readme",
     "dependencies": {
-        "express": "^4.21.2",
-        "http-error-kit": "^1.1.0",
-        "http-response-status-code": "^1.7.5"
+        "http-error-kit": "^1.2.0",
+        "http-response-status-code": "^1.8.0"
+    },
+    "peerDependencies": {
+        "express": "^4.0.0 || ^5.0.0"
     },
     "devDependencies": {
         "@types/express": "^5.0.0",
@@ -40,6 +62,7 @@
         "@types/node": "^22.13.4",
         "@typescript-eslint/eslint-plugin": "^8.22.0",
         "eslint-plugin-security": "^3.0.1",
+        "express": "^4.21.2",
         "jest": "^29.7.0",
         "ts-jest": "^29.2.5",
         "ts-node": "^10.9.2",
