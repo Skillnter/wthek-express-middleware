@@ -14,7 +14,8 @@ export interface IKitExpressMiddlewareOptions {
      *
      * @default false
      */
-    log?: boolean | ((_error: unknown, _req: Request) => void);
+    // eslint-disable-next-line no-unused-vars
+    log?: boolean | ((error: unknown, req: Request) => void);
 
     /**
      * If true, catches non-Kit errors and returns a structured 500 response
