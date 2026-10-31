@@ -15,7 +15,7 @@ _Built for applications powered by [http-error-kit][http-error-kit], this middle
 [![Bundle Size](https://img.shields.io/bundlephobia/minzip/wthek-express-middleware)](https://bundlephobia.com/package/wthek-express-middleware)
 ![npms.io (final)](https://img.shields.io/npms-io/maintenance-score/%40wthek%2Fexpress-middleware?color=brightgreen)
 ![npm](https://img.shields.io/npm/dy/%40wthek%2Fexpress-middleware)
-[![Socket Badge](https://socket.dev/api/badge/npm/package/@wthek/express-middleware/1.0.0)](https://socket.dev/npm/package/@wthek/express-middleware/overview/1.0.0)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/@wthek/express-middleware/1.1.0)](https://socket.dev/npm/package/@wthek/express-middleware/overview/1.1.0)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-121013?logo=github&logoColor=white)](https://skillnter.github.io/wthek-express-middleware/)
 [![Github Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-30363D?&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/Skillnter)
 [![Open Collective](https://img.shields.io/badge/Open%20Collective-3385FF?logo=open-collective&logoColor=white)](https://opencollective.com/skillnter)
