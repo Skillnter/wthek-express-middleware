@@ -14,7 +14,7 @@ export interface IKitExpressMiddlewareOptions {
      *
      * @default false
      */
-    log?: boolean | ((error: unknown, req: Request) => void);
+    log?: boolean | ((_error: unknown, _req: Request) => void);
 
     /**
      * If true, catches non-Kit errors and returns a structured 500 response
@@ -40,7 +40,7 @@ export interface IKitExpressMiddlewareOptions {
  * @param {NextFunction} next The Express.js next function.
  */
 export function KitExpressMiddleware(options?: IKitExpressMiddlewareOptions) {
-    const { log = false, handleUnknownErrors = false } = options || {};
+    const { log = false, handleUnknownErrors = false } = options ?? {};
 
     return (
         error: unknown,
@@ -62,7 +62,8 @@ export function KitExpressMiddleware(options?: IKitExpressMiddlewareOptions) {
             // have already been sent to the client to avoid
             // ERR_HTTP_HEADERS_SENT crashes.
             if (res.headersSent) {
-                return next(error);
+                next(error);
+                return;
             }
 
             if (
@@ -70,12 +71,12 @@ export function KitExpressMiddleware(options?: IKitExpressMiddlewareOptions) {
                 error instanceof KitGeneralError
             ) {
                 // eslint-disable-next-line
-                const statusCode = (error.getInputs()?.statusCode ||
+                const statusCode = (error.getInputs()?.statusCode ??
                     INTERNAL_SERVER_ERROR) as number;
                 res.status(statusCode).send(error);
             } else if (handleUnknownErrors) {
                 res.status(INTERNAL_SERVER_ERROR as number).json({
-                    statusCode: INTERNAL_SERVER_ERROR,
+                    statusCode: INTERNAL_SERVER_ERROR as number,
                     message: "Internal Server Error",
                 });
             } else {
