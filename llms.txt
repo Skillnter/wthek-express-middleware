@@ -1,0 +1,49 @@
+# @wthek/express-middleware
+
+> Production-safe Express.js error-handling middleware for `http-error-kit`.
+
+## Overview
+`@wthek/express-middleware` catches `KitHttpError` and `KitGeneralError` instances thrown in Express routes and automatically responds with the matching HTTP status code and structured JSON error payload. It protects against `ERR_HTTP_HEADERS_SENT` crashes, supports custom loggers, and optionally formats unknown exceptions.
+
+## Installation
+```bash
+npm install @wthek/express-middleware http-error-kit http-response-status-code
+```
+
+## Quick Start
+```typescript
+import express from "express";
+import { KitExpressMiddleware } from "@wthek/express-middleware";
+import { BadRequestError, NotFoundError } from "http-error-kit";
+
+const app = express();
+
+app.get("/api/users/:id", (req, res) => {
+  if (!req.params.id) {
+    throw new BadRequestError("User ID is required");
+  }
+  throw new NotFoundError("User not found");
+});
+
+// IMPORTANT: Register AFTER all routes
+app.use(KitExpressMiddleware({ log: true, handleUnknownErrors: true }));
+
+app.listen(3000);
+```
+
+## API Reference
+
+### `KitExpressMiddleware(options?: IKitExpressMiddlewareOptions)`
+Returns an Express 4-argument error-handling middleware: `(error, req, res, next) => void`.
+
+#### Options (`IKitExpressMiddlewareOptions`)
+- `log` (`boolean | ((error: unknown, req: Request) => void)`, default: `false`):
+  When `true`, logs via `console.error`. When a function is provided, calls custom logger.
+- `handleUnknownErrors` (`boolean`, default: `false`):
+  When `true`, catches non-Kit errors and returns a 500 JSON response instead of forwarding to Express's default HTML handler.
+
+## Safety Rules for AI Agents
+1. Always place `app.use(KitExpressMiddleware(...))` after all route definitions.
+2. In async Express handlers, always forward errors via `next(err)` or throw in Express 5.
+3. Throw errors directly from `http-error-kit` (e.g., `throw new BadRequestError(...)`).
+

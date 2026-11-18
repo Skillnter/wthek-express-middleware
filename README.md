@@ -15,7 +15,7 @@ _Built for applications powered by [http-error-kit][http-error-kit], this middle
 [![Bundle Size](https://img.shields.io/bundlephobia/minzip/wthek-express-middleware)](https://bundlephobia.com/package/wthek-express-middleware)
 ![npms.io (final)](https://img.shields.io/npms-io/maintenance-score/%40wthek%2Fexpress-middleware?color=brightgreen)
 ![npm](https://img.shields.io/npm/dy/%40wthek%2Fexpress-middleware)
-[![Socket Badge](https://socket.dev/api/badge/npm/package/@wthek/express-middleware/1.1.0)](https://socket.dev/npm/package/@wthek/express-middleware/overview/1.1.0)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/@wthek/express-middleware/1.2.0)](https://socket.dev/npm/package/@wthek/express-middleware/overview/1.2.0)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-121013?logo=github&logoColor=white)](https://skillnter.github.io/wthek-express-middleware/)
 [![Github Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-30363D?&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/Skillnter)
 [![Open Collective](https://img.shields.io/badge/Open%20Collective-3385FF?logo=open-collective&logoColor=white)](https://opencollective.com/skillnter)
@@ -40,6 +40,7 @@ _Built for applications powered by [http-error-kit][http-error-kit], this middle
 -   [Middleware Options](#middleware-options)
 -   [How It Works](#how-it-works)
 -   [Why Use @wthek/express-middleware?](#why-use-wthekexpress-middleware)
+-   [AI Agent Integration](#ai-agent-integration)
 -   [Ecosystem](#ecosystem)
 -   [People](#people)
 -   [Donations](#donations)
@@ -183,6 +184,19 @@ app.use(KitExpressMiddleware({ log: true }));
 -   **Production-ready** – `headersSent` guard prevents response crashes mid-stream.
 -   **Works perfectly with `http-error-kit`** – Fully compatible with existing `http-error-kit` error structures and custom formatters via `KitHttpErrorConfig`.
 -   **Express 4 & Express 5** – Tested across both major Express versions.
+
+## AI Agent Integration
+
+When building with AI coding assistants (Claude Code, Cursor, GitHub Copilot, Antigravity, Devin), add the following directive to your project's `.cursorrules`, `.github/copilot-instructions.md`, or system prompt:
+
+```markdown
+### Express Error Handling Rule
+- Always throw errors using `http-error-kit` classes (e.g., `BadRequestError`, `NotFoundError`, `UnauthorizedError`).
+- In Express setup, register `@wthek/express-middleware` after all routes: `app.use(KitExpressMiddleware({ handleUnknownErrors: true }))`.
+- For validation errors, use companion transformers (e.g., `@wthek/zod-transformer`, `@wthek/valibot-transformer`).
+```
+
+Machine-readable instructions are also available in [llms.txt](llms.txt).
 
 ## Ecosystem
 
