@@ -4,6 +4,16 @@ import { INTERNAL_SERVER_ERROR } from "http-response-status-code";
 
 /**
  * Configuration options for KitExpressMiddleware.
+ *
+ * @example
+ * ```typescript
+ * import { IKitExpressMiddlewareOptions } from "@wthek/express-middleware";
+ *
+ * const options: IKitExpressMiddlewareOptions = {
+ *   log: true,
+ *   handleUnknownErrors: true,
+ * };
+ * ```
  */
 export interface IKitExpressMiddlewareOptions {
     /**
@@ -27,18 +37,28 @@ export interface IKitExpressMiddlewareOptions {
 }
 
 /**
- * KitExpressMiddleware is a middleware for Express.js to handle errors in a standard
- * and customizable way. The middleware will inspect the error and if it is an instance
- * of KitHttpError or KitGeneralError, it will use the error's details to construct a
- * response with the appropriate status code. If the error is not an instance of KitHttpError
- * or KitGeneralError, the middleware will call the next function to propagate the error
- * (or return a structured 500 when `handleUnknownErrors` is enabled).
+ * KitExpressMiddleware is a middleware factory for Express.js to handle errors in a standard
+ * and customizable way. Inspects errors and, if an instance of KitHttpError or KitGeneralError,
+ * responds with structured error details and the appropriate HTTP status code.
  *
  * @param {IKitExpressMiddlewareOptions} [options] Optional configuration for the middleware.
- * @param {unknown} error The error to be handled.
- * @param {Request} req The Express.js request object.
- * @param {Response} res The Express.js response object.
- * @param {NextFunction} next The Express.js next function.
+ * @returns {Function} Express error-handling middleware function.
+ *
+ * @example
+ * ```typescript
+ * import express from "express";
+ * import { KitExpressMiddleware } from "@wthek/express-middleware";
+ * import { BadRequestError } from "http-error-kit";
+ *
+ * const app = express();
+ *
+ * app.get("/api/item", () => {
+ *   throw new BadRequestError("Invalid item request");
+ * });
+ *
+ * // Register as final error handler after all routes
+ * app.use(KitExpressMiddleware({ log: true, handleUnknownErrors: true }));
+ * ```
  */
 export function KitExpressMiddleware(options?: IKitExpressMiddlewareOptions) {
     const { log = false, handleUnknownErrors = false } = options ?? {};

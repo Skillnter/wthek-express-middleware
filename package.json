@@ -1,6 +1,6 @@
 {
     "name": "@wthek/express-middleware",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "Production-safe Express.js error-handling middleware for http-error-kit. Maps KitHttpError instances to structured JSON responses with correct HTTP status codes, headersSent protection, and optional logging.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -41,6 +41,15 @@
         "error-handler",
         "typescript",
         "middleware",
+        "rfc-7807",
+        "rfc-9457",
+        "structured-errors",
+        "api-error-response",
+        "ai-agent",
+        "agent-skill",
+        "antigravity",
+        "cursor",
+        "copilot",
         "skillnter"
     ],
     "author": "Himanshu Bansal <skillhimanshubansal@gmail.com>",
@@ -50,8 +59,8 @@
     },
     "homepage": "https://github.com/Skillnter/wthek-express-middleware#readme",
     "dependencies": {
-        "http-error-kit": "^1.2.0",
-        "http-response-status-code": "^1.8.0"
+        "http-error-kit": "^1.5.0",
+        "http-response-status-code": "^1.9.0"
     },
     "peerDependencies": {
         "express": "^4.0.0 || ^5.0.0"
@@ -75,6 +84,7 @@
     "files": [
         "dist/index.js",
         "dist/index.d.ts",
+        "llms.txt",
         "LICENSE"
     ],
     "funding": [
